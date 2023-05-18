@@ -1,0 +1,144 @@
+<!-- 결과를 출력할 테이블 예시 -->
+<!-- 결과를 출력할 테이블 예시 -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>홍익대학교 수강신청</title>
+  </head>
+  <style>
+    
+    p{
+      font-size: 18px;
+      margin-left: 30px;
+      color:rgb(150, 35, 35);
+    }
+    table {
+          border-collapse: collapse;
+          width: 450px;
+          margin-left: 30px;
+          
+        }
+        
+    th, td {
+          
+          text-align: left;
+          border-bottom: 1px solid #93aef6;
+          border-top: 1px solid #93aef6;
+          height: 30px;
+          
+        }
+    
+        
+    th {
+          background-color: #c9f0f3;
+        }
+    #result{
+      width : 450px;
+      text-align: right;
+    }
+    #text{
+      color:rgb(189, 57, 57);
+      font-size: 15px;
+      border-top: #93aef6;
+      border-bottom: #93aef6;
+      
+    }
+    
+    #btn{
+      
+      margin-left: 30px;
+      width:100px;
+      height:40px;
+      font-size: 16px;
+    }
+    #btn2{
+      margin-left:10px;
+      width:100px;
+      height:40px;
+      font-size: 16px;
+    }
+        
+  </style>
+  <body>
+    <p>담은 과목 수강신청 하기</p>
+    <table>
+        <thead>
+            <tr>
+              <th>학수번호</th>
+              <th>분반</th>
+              <th>교과목명</th>
+              <th>이수구분</th>
+              <th>학점</th>
+              <th>담당교수</th>
+              <th>강의시간</th>
+             
+            </tr>
+          </thead>
+    </table>
+    <table id="result"  >
+      
+    </table>
+    <table>
+      <tbody>
+        <tr><td height="1" bgcolor="#c9f0f3"></td></tr>
+      </tbody>
+    </table>
+    <p id="text">과목명 오른쪽에 (*)표시가 있는 것은 영어로 진행되는 수업입니다<br><br>
+    수강신청시 표시된 이수구분은 본인의 졸업학점을 위한 이수구분으로 분류된 것이 아닙니다.<br><br>
+   수업 계획서의 강의 방침을 반드시 숙지하고 수강신청하기 바랍니다.<br>
+   학년별,학과별,단과대학별 제한의 원인 등으로 수강신청이 안 될 경우, 정정기간 중에 '과목별 수강신청'에서 다시 시도해볼 수 있습니다.<br><br>
+   사이버강좌의 중간/기말고사는 토/일요일에 본교 시험장에서 직접 참석하여 시험을 봐야 합니다.<br>
+   각 과목별 시험일정은 추후 공지될 예정입니다.</p>
+
+   <button id="btn" onclick="javascript:btn()">수강신청</button>
+   <button id="btn2">수업시간표</button>
+    
+    
+
+    <script>
+        const params = new URLSearchParams(location.search);
+        const checkedValues = params.get('checkedValues').split(',');
+  
+        // 선택된 값 출력하기
+        const resultElem = document.getElementById('result');
+        checkedValues.forEach((value, index) => {
+          const tr = document.createElement('tr');
+          const td1 = document.createElement('td');
+          const td2 = document.createElement('td');
+          const td3 = document.createElement('td');
+          const td4 = document.createElement('td');
+          const td5 = document.createElement('td');
+          const td6 = document.createElement('td');
+
+  
+          // 각각의 td 태그에 값을 추가하고 줄바꿈 문자를 포함시킴
+          td1.textContent = value.split(';')[0] ;
+          td2.textContent = value.split(';')[1] ;
+          td3.textContent = value.split(';')[2] ;
+          td4.textContent = value.split(';')[3] ;
+          td5.textContent = value.split(';')[4] ;
+          td6.textContent = value.split(';')[5] ;
+
+  
+          tr.appendChild(td1);
+          tr.appendChild(td2);
+          tr.appendChild(td3);
+          tr.appendChild(td4);
+          tr.appendChild(td5);
+          tr.appendChild(td6);
+  
+          // 첫 번째 행이 아닌 경우 이전 행과 구분하기 위해 줄바꿈 문자를 추가
+          
+          resultElem.appendChild(tr);
+        });
+        function btn(){
+          alert('수강신청이 되었습니다')
+        }
+      </script>
+  </body>
+</html>
+
+
+  
+
